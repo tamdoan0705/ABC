@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+
+<html lang="vi"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@300;400;500;600;700;800&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#33f20d",
+                        "background-light": "#f6f8f5",
+                        "background-dark": "#132210",
+                    },
+                    fontFamily: {
+                        "display": ["Manrope"],
+                        "sans": ["Manrope"]
+                    },
+                    borderRadius: {
+                        "DEFAULT": "0.5rem", 
+                        "lg": "0.5rem", 
+                        "xl": "0.75rem", 
+                        "2xl": "1rem",
+                        "3xl": "1.5rem",
+                        "full": "9999px"
+                    },
+                },
+            },
+        }
+    </script>
+<style>
+        body { font-family: 'Manrope', sans-serif; }
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .material-symbols-filled {
+            font-variation-settings: 'FILL' 1, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+    </style>
+</head>
+<body class="bg-background-light dark:bg-background-dark text-slate-900 dark:text-slate-100 min-h-screen">
+<div class="layout-container flex h-full grow flex-col">
+<!-- Top Navigation Bar -->
+<header class="flex items-center justify-between whitespace-nowrap border-b border-primary/10 px-6 py-4 lg:px-20 bg-background-light dark:bg-background-dark sticky top-0 z-50">
+<div class="flex items-center gap-8">
+<a class="flex items-center cursor-pointer" href="index.html">
+<h2 class="text-slate-900 dark:text-slate-100 text-xl font-extrabold leading-tight tracking-tight">GreenMap</h2>
+</a>
+<nav class="hidden md:flex items-center gap-8">
+<a class="text-slate-700 dark:text-slate-300 text-sm font-medium hover:text-primary transition-colors cursor-pointer" href="index.html">Trang chủ</a>
+<a class="text-primary text-sm font-bold hover:text-primary transition-colors cursor-pointer" href="cam-nang.html">Cẩm nang</a>
+<a class="text-slate-700 dark:text-slate-300 text-sm font-medium hover:text-primary transition-colors cursor-pointer" href="ban-do.html">Bản đồ</a>
+</nav>
+</div>
+<div class="flex items-center gap-4">
+<div class="hidden sm:block">
+<label class="relative flex items-center">
+<span class="material-symbols-outlined absolute left-3 text-primary">search</span>
+<input class="w-64 pl-10 pr-4 py-2 rounded-full border-none bg-primary/10 focus:ring-2 focus:ring-primary text-sm" placeholder="Tìm kiếm rác thải..."/>
+</label>
+</div>
+</div>
+</header>
+<main class="max-w-7xl mx-auto px-6 lg:px-20 py-10 w-full">
+<!-- Hero Section -->
+<div class="mb-12">
+<div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-primary/20 text-primary text-xs font-bold uppercase tracking-wider mb-4">
+<span class="material-symbols-outlined text-sm">eco</span> SỐNG XANH MỖI NGÀY
+            </div>
+<h1 class="text-4xl lg:text-5xl font-extrabold text-slate-900 dark:text-slate-100 mb-4">Cẩm nang phân loại rác</h1>
+<p class="text-lg text-slate-600 dark:text-slate-400 max-w-2xl">
+                Hãy cùng chung tay bảo vệ môi trường bằng cách phân loại rác thải đúng cách. Tra cứu chi tiết cách xử lý từng loại rác thải phổ biến.
+            </p>
+</div>
+<!-- Mobile Search (Visible only on small screens) -->
+<div class="mb-10 sm:hidden">
+<label class="relative flex items-center w-full">
+<span class="material-symbols-outlined absolute left-3 text-primary">search</span>
+<input class="w-full pl-10 pr-4 py-3 rounded-xl border-none bg-primary/10 focus:ring-2 focus:ring-primary text-base" placeholder="Tìm: pin, chai nhựa, thức ăn..."/>
+</label>
+</div>
+<!-- Waste Cards Grid -->
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+<!-- Recyclable -->
+<div class="bg-white dark:bg-slate-800/50 rounded-2xl border border-primary/10 p-6 flex flex-col h-full hover:shadow-xl hover:shadow-primary/5 transition-all group cursor-pointer hover:-translate-y-1">
+<div class="w-14 h-14 rounded-xl bg-blue-100 text-blue-600 flex items-center justify-center mb-6 group-hover:scale-110 transition-transform">
+<span class="material-symbols-outlined text-3xl">recycling</span>
+</div>
+<h3 class="text-xl font-bold mb-2">Rác tái chế</h3>
+<p class="text-sm text-slate-500 dark:text-slate-400 mb-4">Các loại rác có thể dùng làm nguyên liệu sản xuất sản phẩm mới, giúp tiết kiệm tài nguyên.</p>
+<div class="space-y-2 mb-4 flex-grow">
+<p class="text-xs font-bold text-blue-600 uppercase">Ví dụ:</p>
+<div class="flex flex-wrap gap-2">
+<span class="px-2 py-1 bg-slate-100 dark:bg-slate-700 rounded-lg text-xs">Giấy báo, bìa carton</span>
+<span class="px-2 py-1 bg-slate-100 dark:bg-slate-700 rounded-lg text-xs">Vỏ lon nhôm, kim loại</span>
+<span class="px-2 py-1 bg-slate-100 dark:bg-slate-700 rounded-lg text-xs">Chai nhựa (PET, HDPE)</span>
+<span class="px-2 py-1 bg-slate-100 dark:bg-slate-700 rounded-lg text-xs">Thủy tinh sạch</span>
+</div>
+</div>
+<div class="pt-4 border-t border-blue-100 dark:border-slate-700/50 space-y-3">
+<p class="text-xs font-extrabold text-blue-600 uppercase flex items-center gap-1 tracking-tight">
+<span class="material-symbols-outlined text-sm">tips_and_updates</span> GỢI Ý TÁI CHẾ:
+                    </p>
+<ul class="space-y-3 text-[11px] leading-relaxed text-slate-600 dark:text-slate-400">
+<li class="flex flex-col gap-0.5">
+<span class="font-bold text-slate-800 dark:text-slate-200">Chai nhựa:</span>
+<span>Làm chậu cây mini, ống đựng bút, hoặc đèn trang trí.</span>
+</li>
+<li class="flex flex-col gap-0.5">
+<span class="font-bold text-slate-800 dark:text-slate-200">Giấy/Bìa carton:</span>
+<span>Làm hộp lưu trữ, khung ảnh, hoặc đồ chơi mô hình.</span>
+</li>
+<li class="flex flex-col gap-0.5">
+<span class="font-bold text-slate-800 dark:text-slate-200">Vỏ lon nhôm:</span>
+<span>Làm chân nến, ống cắm hoa, hoặc trang trí bàn làm việc.</span>
+</li>
+</ul>
+</div>
+</div>
+<!-- Non-recyclable -->
+<div class="bg-white dark:bg-slate-800/50 rounded-2xl border border-primary/10 p-6 flex flex-col h-full hover:shadow-xl hover:shadow-primary/5 transition-all group cursor-pointer hover:-translate-y-1">
+<div class="w-14 h-14 rounded-xl bg-slate-100 text-slate-600 flex items-center justify-center mb-6 group-hover:scale-110 transition-transform">
+<span class="material-symbols-outlined text-3xl">delete</span>
+</div>
+<h3 class="text-xl font-bold mb-2">Rác không tái chế</h3>
+<p class="text-sm text-slate-500 dark:text-slate-400 mb-4">Rác thải còn lại sau khi đã tách rác hữu cơ và rác tái chế, thường được mang đi chôn lấp.</p>
+<div class="space-y-2 mb-4 flex-grow">
+<p class="text-xs font-bold text-slate-600 uppercase">Ví dụ:</p>
+<div class="flex flex-wrap gap-2">
+<span class="px-2 py-1 bg-slate-100 dark:bg-slate-700 rounded-lg text-xs">Bỉm, băng vệ sinh</span>
+<span class="px-2 py-1 bg-slate-100 dark:bg-slate-700 rounded-lg text-xs">Gốm sứ vỡ, gương</span>
+<span class="px-2 py-1 bg-slate-100 dark:bg-slate-700 rounded-lg text-xs">Khẩu trang, bông y tế</span>
+<span class="px-2 py-1 bg-slate-100 dark:bg-slate-700 rounded-lg text-xs">Túi nilon bẩn</span>
+</div>
+</div>
+<div class="pt-4 border-t border-slate-100 dark:border-slate-700/50"><p class="text-xs font-extrabold text-slate-500 uppercase flex items-center gap-1 tracking-tight"><span class="material-symbols-outlined text-sm">info</span> GỢI Ý XỬ LÝ:</p><ul class="mt-3 space-y-3 text-[11px] leading-relaxed text-slate-600 dark:text-slate-400"><li class="flex flex-col gap-0.5"><span class="font-bold text-slate-800 dark:text-slate-200">Bỉm, băng vệ sinh:</span><span>Gói kín trong túi nilon trước khi cho vào thùng rác.</span></li><li class="flex flex-col gap-0.5"><span class="font-bold text-slate-800 dark:text-slate-200">Gốm sứ vỡ, gương:</span><span>Gói bằng giấy báo dày hoặc bìa carton để tránh gây thương tích.</span></li><li class="flex flex-col gap-0.5"><span class="font-bold text-slate-800 dark:text-slate-200">Khẩu trang, bông y tế:</span><span>Cắt dây khẩu trang và gói kín để ngăn chặn lây nhiễm chéo.</span></li></ul></div>
+</div>
+<!-- Hazardous -->
+<div class="bg-white dark:bg-slate-800/50 rounded-2xl border border-primary/10 p-6 flex flex-col h-full hover:shadow-xl hover:shadow-primary/5 transition-all group cursor-pointer hover:-translate-y-1">
+<div class="w-14 h-14 rounded-xl bg-red-100 text-red-600 flex items-center justify-center mb-6 group-hover:scale-110 transition-transform">
+<span class="material-symbols-outlined text-3xl">warning</span>
+</div>
+<h3 class="text-xl font-bold mb-2">Rác nguy hại</h3>
+<p class="text-sm text-slate-500 dark:text-slate-400 mb-4">Chứa các chất độc hại, dễ cháy nổ, ăn mòn hoặc lây nhiễm, cần xử lý đặc biệt.</p>
+<div class="space-y-2 mb-4 flex-grow">
+<p class="text-xs font-bold text-red-600 uppercase">Ví dụ:</p>
+<div class="flex flex-wrap gap-2">
+<span class="px-2 py-1 bg-slate-100 dark:bg-slate-700 rounded-lg text-xs">Pin cũ, ắc quy</span>
+<span class="px-2 py-1 bg-slate-100 dark:bg-slate-700 rounded-lg text-xs">Bóng đèn huỳnh quang</span>
+<span class="px-2 py-1 bg-slate-100 dark:bg-slate-700 rounded-lg text-xs">Thuốc hết hạn</span>
+<span class="px-2 py-1 bg-slate-100 dark:bg-slate-700 rounded-lg text-xs">Vỏ bình xịt hóa chất</span>
+</div>
+</div>
+<div class="pt-4 border-t border-red-100 dark:border-slate-700/50"><p class="text-xs font-extrabold text-red-600 uppercase flex items-center gap-1 tracking-tight"><span class="material-symbols-outlined text-sm">report</span> GỢI Ý XỬ LÝ:</p><ul class="mt-3 space-y-3 text-[11px] leading-relaxed text-slate-600 dark:text-slate-400"><li class="flex flex-col gap-0.5"><span class="font-bold text-slate-800 dark:text-slate-200">Pin cũ, ắc quy:</span><span>Mang đến các điểm thu gom rác thải điện tử tập trung.</span></li><li class="flex flex-col gap-0.5"><span class="font-bold text-slate-800 dark:text-slate-200">Bóng đèn:</span><span>Bọc kỹ bằng hộp carton để tránh vỡ và rò rỉ thủy ngân.</span></li><li class="flex flex-col gap-0.5"><span class="font-bold text-slate-800 dark:text-slate-200">Thuốc hết hạn:</span><span>Giao lại cho các nhà thuốc hoặc điểm xử lý rác y tế chuyên dụng.</span></li></ul></div>
+</div>
+<!-- Organic -->
+<div class="bg-white dark:bg-slate-800/50 rounded-2xl border border-primary/10 p-6 flex flex-col h-full hover:shadow-xl hover:shadow-primary/5 transition-all group cursor-pointer hover:-translate-y-1">
+<div class="w-14 h-14 rounded-xl bg-primary/20 text-primary flex items-center justify-center mb-6 group-hover:scale-110 transition-transform">
+<span class="material-symbols-outlined text-3xl">compost</span>
+</div>
+<h3 class="text-xl font-bold mb-2">Rác hữu cơ</h3>
+<p class="text-sm text-slate-500 dark:text-slate-400 mb-4">Các loại rác dễ phân hủy tự nhiên, có thể ủ làm phân bón cho cây trồng.</p>
+<div class="space-y-2 mb-4 flex-grow">
+<p class="text-xs font-bold text-primary uppercase">Ví dụ:</p>
+<div class="flex flex-wrap gap-2">
+<span class="px-2 py-1 bg-slate-100 dark:bg-slate-700 rounded-lg text-xs">Thức ăn thừa</span>
+<span class="px-2 py-1 bg-slate-100 dark:bg-slate-700 rounded-lg text-xs">Vỏ trái cây, rau củ</span>
+<span class="px-2 py-1 bg-slate-100 dark:bg-slate-700 rounded-lg text-xs">Lá cây, cỏ khô</span>
+<span class="px-2 py-1 bg-slate-100 dark:bg-slate-700 rounded-lg text-xs">Bã trà, bã cà phê</span>
+</div>
+</div>
+<div class="pt-4 border-t border-primary/20 dark:border-slate-700/50"><p class="text-xs font-extrabold text-primary uppercase flex items-center gap-1 tracking-tight"><span class="material-symbols-outlined text-sm">nature_people</span> GỢI Ý TÁI CHẾ:</p><ul class="mt-3 space-y-3 text-[11px] leading-relaxed text-slate-600 dark:text-slate-400"><li class="flex flex-col gap-0.5"><span class="font-bold text-slate-800 dark:text-slate-200">Thức ăn thừa:</span><span>Dùng làm thức ăn chăn nuôi hoặc ủ làm phân bón hữu cơ.</span></li><li class="flex flex-col gap-0.5"><span class="font-bold text-slate-800 dark:text-slate-200">Vỏ trái cây, rau củ:</span><span>Ủ trong thùng compost để tạo đất dinh dưỡng cho cây trồng.</span></li><li class="flex flex-col gap-0.5"><span class="font-bold text-slate-800 dark:text-slate-200">Lá cây, cỏ khô:</span><span>Sử dụng làm lớp phủ gốc cây để giữ ẩm cho đất.</span></li></ul></div>
+</div>
+</div>
+<!-- Info Section -->
+<div class="mt-16 bg-primary/5 rounded-3xl p-8 lg:p-12 border border-primary/20">
+<div class="flex flex-col lg:flex-row items-center gap-10">
+<div class="w-full lg:w-1/2">
+<div class="relative rounded-2xl overflow-hidden aspect-video shadow-2xl">
+<div class="absolute inset-0 bg-gradient-to-tr from-primary/40 to-transparent z-10"></div>
+<img alt="Phân loại rác tại nguồn" class="w-full h-full object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBbPF1FziNLIqcd25wSwhA8L8bU9V2aC_cxa9nLf2QQkR4uu84YLOCGM9ohFLXC1-FLP8vYQ0sLafua8cTAdOrgqsHnB5kuAEyjwR8nbgZWGqOUqYY_u_q15NC9UL2weZPbo8g0TNsg-rDpET5KWkt9GKw6Y3SHMisjbpRDWCCOaWWefR8v2mMQ1rXutUQ8zCpDT-pYJ1QTUc5tNyUQKGDoZqEmNX46L9E3sB5SQTrlACbfWHyJQ6LBqykUFoaZP2sfc0yb3UE1h4w"/>
+</div>
+</div>
+<div class="w-full lg:w-1/2 space-y-6">
+<h2 class="text-3xl font-bold">Vì sao cần phân loại rác?</h2>
+<ul class="space-y-4">
+<li class="flex items-start gap-3">
+<span class="material-symbols-outlined text-primary mt-1">check_circle</span>
+<span><strong class="text-slate-900 dark:text-slate-100">Tiết kiệm tài nguyên:</strong> Tăng tỷ lệ rác có thể tái chế, giảm khai thác tài nguyên thiên nhiên.</span>
+</li>
+<li class="flex items-start gap-3">
+<span class="material-symbols-outlined text-primary mt-1">check_circle</span>
+<span><strong class="text-slate-900 dark:text-slate-100">Bảo vệ sức khỏe:</strong> Giảm thiểu ô nhiễm nguồn nước và không khí do xử lý rác không đúng cách.</span>
+</li>
+<li class="flex items-start gap-3">
+<span class="material-symbols-outlined text-primary mt-1">check_circle</span>
+<span><strong class="text-slate-900 dark:text-slate-100">Tiết kiệm chi phí:</strong> Giảm diện tích bãi chôn lấp và chi phí vận chuyển, xử lý rác thải.</span>
+</li>
+</ul>
+</div>
+</div>
+</div>
+</main>
+<!-- Footer -->
+<footer class="bg-background-light dark:bg-background-dark py-12 px-6 lg:px-20 border-t border-primary/10">
+<div class="max-w-7xl mx-auto flex flex-col md:flex-row justify-between items-center gap-8">
+<div class="flex items-center">
+<span class="text-lg font-bold text-primary">GreenMap © 2026</span>
+</div>
+<div class="flex gap-8 text-sm text-slate-500 dark:text-slate-400">
+<a class="hover:text-primary transition-colors cursor-pointer" href="#">Điều khoản</a>
+<a class="hover:text-primary transition-colors cursor-pointer" href="#">Bảo mật</a>
+<a class="hover:text-primary transition-colors cursor-pointer" href="index.html#contact">Liên hệ</a>
+</div>
+<div class="flex gap-4">
+<div class="px-3 py-1 rounded-full bg-slate-200 dark:bg-slate-800 text-slate-600 dark:text-slate-400 text-xs font-medium cursor-pointer hover:bg-primary/20 hover:text-primary transition-all uppercase tracking-wider">
+                    VN
+                </div>
+<div class="px-3 py-1 rounded-full bg-slate-200 dark:bg-slate-800 text-slate-600 dark:text-slate-400 text-xs font-medium cursor-pointer hover:bg-primary/20 hover:text-primary transition-all uppercase tracking-wider">
+                    Support
+                </div>
+</div>
+</div>
+</footer>
+</div>
+</body></html>
