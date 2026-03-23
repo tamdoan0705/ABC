@@ -1,0 +1,405 @@
+<!DOCTYPE html>
+
+<html lang="vi"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>GreenMap - Phân Loại Rác Thông Minh</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@200..800&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght@100..700,0..1&amp;family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#33f20d",
+                        "background-light": "#f6f8f5",
+                        "background-dark": "#132210",
+                    },
+                    fontFamily: {
+                        "display": ["Manrope", "sans-serif"],
+                        "sans": ["Manrope", "sans-serif"]
+                    },
+                    borderRadius: {
+                        "DEFAULT": "0.5rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "2xl": "1rem",
+                        "3xl": "1.5rem",
+                        "full": "9999px"
+                    },
+                },
+            },
+        }
+    </script>
+<style>
+        body {
+            font-family: 'Manrope', sans-serif;
+            scroll-behavior: smooth;
+        }
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+            display: inline-block;
+            vertical-align: middle;
+            line-height: 1;
+        }
+        .material-symbols-filled {
+            font-variation-settings: 'FILL' 1, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        button, a, .group {
+            cursor: pointer;
+        }
+        .loading-spinner {
+            border: 4px solid rgba(51, 242, 13, 0.1);
+            border-left-color: #33f20d;
+            border-radius: 50%;
+            width: 40px;
+            height: 40px;
+            animation: spin 1s linear infinite;
+        }
+        @keyframes spin {
+            to { transform: rotate(360deg); }
+        }
+        .fade-in {
+            animation: fadeIn 0.5s ease-out;
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+    </style>
+</head>
+<body class="bg-background-light text-slate-900 antialiased transition-colors duration-300">
+<!-- Top Navigation Bar -->
+<header class="sticky top-0 z-50 w-full border-b border-slate-200 bg-background-light/80 backdrop-blur-md">
+<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+<div class="flex h-16 items-center">
+<div class="flex items-center gap-12 w-full justify-between">
+<div class="flex items-center gap-12">
+<a class="flex items-center cursor-pointer" href="index.html">
+<h2 class="text-slate-900 text-xl font-extrabold leading-tight tracking-tight">GreenMap</h2>
+</a>
+<nav class="hidden md:flex items-center gap-8">
+<a class="text-sm font-bold text-primary transition-colors hover:scale-105" href="index.html">Trang chủ</a>
+<a class="text-sm font-medium hover:text-primary transition-colors hover:scale-105" href="cam-nang.html">Cẩm nang</a>
+<a class="text-sm font-medium hover:text-primary transition-colors hover:scale-105" href="ban-do.html">Bản đồ</a>
+</nav>
+</div>
+<div class="flex items-center gap-4">
+<a class="bg-primary hover:opacity-90 text-background-dark px-5 py-2 rounded-lg font-bold text-sm transition-all shadow-lg shadow-primary/20 hover:scale-105" href="#phan-loai">
+                        Bắt đầu ngay
+                    </a>
+</div>
+</div>
+</div>
+</div>
+</header>
+<main>
+<!-- Hero Section -->
+<section class="relative overflow-hidden py-16 lg:py-24">
+<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+<div class="grid lg:grid-cols-2 gap-12 items-center">
+<div class="flex flex-col gap-8">
+<div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-primary/10 text-primary text-xs font-bold uppercase tracking-wider w-fit">
+<span class="relative flex h-2 w-2">
+<span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-primary opacity-75"></span>
+<span class="relative inline-flex rounded-full h-2 w-2 bg-primary"></span>
+</span>
+                        Công nghệ AI mới nhất
+                    </div>
+<h1 class="text-4xl md:text-6xl font-extrabold leading-tight tracking-tight text-slate-900">
+                        Phân loại rác thông minh vì <span class="text-primary">môi trường xanh</span>
+</h1>
+<p class="text-lg text-slate-600 max-w-xl">
+                        Sử dụng sức mạnh trí tuệ nhân tạo để xác định chính xác loại rác thải và nhận hướng dẫn xử lý đúng cách chỉ trong vài giây.
+                    </p>
+<div class="flex flex-col sm:flex-row gap-4">
+<a class="bg-primary hover:opacity-90 text-background-dark px-8 py-4 rounded-xl font-bold text-lg transition-all shadow-xl shadow-primary/30 flex items-center justify-center gap-2 hover:scale-105" href="#phan-loai">
+<span>Bắt đầu phân loại ngay</span>
+</a>
+</div>
+</div>
+<div class="relative">
+<div class="absolute -top-10 -right-10 w-64 h-64 bg-primary/20 rounded-full blur-3xl"></div>
+<div class="absolute -bottom-10 -left-10 w-64 h-64 bg-primary/10 rounded-full blur-3xl"></div>
+<div class="relative rounded-2xl overflow-hidden shadow-2xl border border-slate-200">
+<img alt="Clean Environment Illustration" class="w-full h-auto object-cover" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBCQIR4exmUsSp4TNojrJTx76bFXFFayBwmpmYLg4oOdAQWHofi5jASyOUd3JII2rWmsyL3LsLNMko_TX2BmgB_cOJ3ZqGSjxY_xhCXwefr62EnNVGs7EVb8h5v2sv73ZyDVFaUuTtPyLybw2xsVhz-NkTLf5P6hQoVxCixmnGTwetGzYf3dY05jwFZNMxnmBCaX6NoKIFpW5CFWGmxkeUAp_6jBOMotgW0S1Mx8lISXSDqkBgkYyyYhb-G8ylkiN8eTwbFcFEFALE"/>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- AI Waste Classifier Section -->
+<section class="py-20 bg-white scroll-mt-16" id="phan-loai">
+<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+<div class="flex flex-col gap-8">
+<div class="text-center space-y-4">
+<h2 class="text-3xl md:text-5xl font-black text-slate-900 tracking-tight">Trình phân loại AI</h2>
+<p class="text-slate-600 max-w-2xl mx-auto text-lg">Tải ảnh rác thải của bạn lên để AI nhận diện và hướng dẫn xử lý ngay lập tức.</p>
+</div>
+<div class="flex flex-col lg:flex-row gap-8 items-start">
+<!-- Left: Upload & Result Container -->
+<div class="flex-1 w-full min-h-[500px]">
+<!-- 1. Upload Area -->
+<div class="group relative flex flex-col items-center justify-center rounded-3xl border-4 border-dashed border-primary/20 bg-primary/5 px-8 py-24 text-center transition-all hover:border-primary/40 hover:bg-primary/10" id="upload-zone">
+<div class="mb-6 flex h-24 w-24 items-center justify-center rounded-full bg-primary/20 text-primary">
+<span class="material-symbols-outlined text-5xl">upload_file</span>
+</div>
+<h3 class="mb-2 text-2xl font-bold text-slate-900">Kéo và thả ảnh tại đây</h3>
+<p class="mb-8 max-w-xs text-sm text-slate-500">Hỗ trợ các định dạng JPG, PNG hoặc HEIC. Kích thước tối đa 10MB.</p>
+<label class="cursor-pointer rounded-xl bg-primary px-10 py-4 font-bold text-background-dark shadow-lg shadow-primary/20 hover:scale-105 active:scale-95 transition-transform">
+                                Chọn tệp từ máy tính
+                                <input accept="image/*" class="hidden" id="file-input" type="file"/>
+</label>
+</div>
+<!-- 2. Loading State -->
+<div class="hidden flex flex-col items-center justify-center rounded-3xl border border-slate-200 bg-white py-32 text-center" id="loading-state">
+<div class="loading-spinner mb-6"></div>
+<h3 class="text-xl font-bold mb-2">Đang phân tích ảnh...</h3>
+<p class="text-slate-500 text-sm">Trí tuệ nhân tạo đang xử lý vật liệu rác thải của bạn.</p>
+</div>
+<!-- 3. Classification Result -->
+<div class="hidden fade-in space-y-8" id="result-section">
+<div class="grid md:grid-cols-2 gap-8 rounded-3xl bg-white border border-slate-200 p-8 shadow-2xl">
+<div class="relative aspect-square rounded-2xl overflow-hidden bg-slate-100">
+<img alt="Uploaded waste" class="w-full h-full object-cover" id="preview-image" src=""/>
+<div class="absolute top-4 left-4 bg-primary/90 text-background-dark px-3 py-1 rounded-full text-xs font-bold uppercase">
+                                        Đã nhận diện
+                                    </div>
+</div>
+<div class="flex flex-col gap-6">
+<div>
+<div class="flex items-center justify-between mb-1">
+<h3 class="text-3xl font-black text-slate-900" id="result-title">Chai nhựa PET</h3>
+<div class="flex flex-col items-end">
+<span class="text-xs font-bold text-primary uppercase">Độ tin cậy</span>
+<span class="text-2xl font-black text-primary" id="confidence-score">98%</span>
+</div>
+</div>
+<div class="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-primary/10 text-primary text-xs font-bold">
+<span class="material-symbols-outlined text-sm">recycling</span>
+<span>Rác tái chế</span>
+</div>
+</div>
+<div class="space-y-4">
+<h4 class="font-bold text-slate-900 flex items-center gap-2">
+<span class="material-symbols-outlined text-primary"></span>
+<span>Hướng dẫn xử lý:</span>
+</h4>
+<ul class="space-y-3 text-slate-600">
+<li class="flex items-start gap-3">
+<span class="flex-shrink-0 w-6 h-6 rounded-full bg-primary/10 text-primary flex items-center justify-center text-xs font-bold">1</span>
+                                                Súc rửa sạch bên trong để loại bỏ thực phẩm dư thừa.
+                                            </li>
+<li class="flex items-start gap-3">
+<span class="flex-shrink-0 w-6 h-6 rounded-full bg-primary/10 text-primary flex items-center justify-center text-xs font-bold">2</span>
+                                                Bóp bẹp hoặc làm xẹp để tiết kiệm diện tích.
+                                            </li>
+<li class="flex items-start gap-3">
+<span class="flex-shrink-0 w-6 h-6 rounded-full bg-primary/10 text-primary flex items-center justify-center text-xs font-bold">3</span>
+                                                Bỏ vào thùng rác màu Vàng (rác tái chế).
+                                            </li>
+</ul>
+</div>
+<button class="mt-4 flex items-center justify-center gap-2 w-full rounded-xl border-2 border-slate-200 py-4 font-bold hover:bg-slate-50 transition-colors" id="reset-btn">
+<span class="material-symbols-outlined"></span>
+<span>Tải ảnh khác</span>
+</button>
+</div>
+</div>
+<div class="rounded-2xl bg-primary/5 p-6 flex flex-col md:flex-row items-center gap-6 border border-primary/10">
+<div class="flex-1">
+<h4 class="text-lg font-bold mb-2">Lời nhắc môi trường</h4>
+<p class="text-sm text-slate-600 leading-relaxed">Sản phẩm này có thể mất tới 450 năm để phân hủy. Cảm ơn bạn đã đóng góp cho môi trường!</p>
+</div>
+<a class="whitespace-nowrap rounded-lg border border-primary px-6 py-2.5 text-sm font-bold text-primary hover:bg-primary hover:text-background-dark transition-all" href="ban-do.html">
+                                    Xem điểm thu gom gần nhất
+                                </a>
+</div>
+</div>
+</div>
+<!-- Right: History Area -->
+<div class="lg:w-96 w-full flex flex-col gap-6 sticky top-24">
+<div class="flex items-center justify-between border-b border-slate-200 pb-2">
+<h3 class="text-xl font-bold">Hoạt động gần đây</h3>
+<span class="flex items-center gap-1 text-xs font-medium text-slate-500">
+<span class="material-symbols-outlined text-sm"></span> Sẵn sàng
+                            </span>
+</div>
+<div class="flex flex-col gap-3" id="history-list">
+<div class="flex items-center gap-3 p-3 rounded-xl bg-white shadow-sm border border-slate-200">
+<div class="h-12 w-12 rounded-lg bg-slate-100 flex items-center justify-center overflow-hidden shrink-0">
+<img alt="PET Bottle" class="object-cover h-full w-full" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAmDNyPIYN7_VhKdAu03e5gkocGuTm7vqgPRslgssXw7WMUQ4o2R2sp3NunuFR8jf8iWs6N2BQs1mheKlrmlfzqpS6Xca7UHNHLTHsNuAxepzYw799uN-niLwd5dx95SDEditCaD33VE4x20IreWg1Qi5iLJlcg5M-zyQfD68YMYB9bUjJm6-738E5gpDq3HNaCUwMGlbN14TIddrr__RYdTsCM-OybZPGW0n7r2uKaeaXttDSapoZfjleNAFErd5my_LPH-PW7gOw"/>
+</div>
+<div class="flex flex-col overflow-hidden">
+<span class="text-xs font-bold truncate">Chai nhựa PET</span>
+<span class="text-[10px] text-primary font-semibold">Nhựa có thể tái chế</span>
+</div>
+</div>
+<div class="flex items-center gap-3 p-3 rounded-xl bg-white shadow-sm border border-slate-200 opacity-60">
+<div class="h-12 w-12 rounded-lg bg-slate-100 flex items-center justify-center overflow-hidden shrink-0"><img alt="Aluminum Can" class="object-cover h-full w-full" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCZVXkh7-mXYls9NygM2mNVJcD5yLPlC8vHOqqk0YnRT6xMvuWKKxf3SSRlfCVDkrye7GaMiYOCucPBShoHDjmZajcy59vsdaqVtAvgjkxMe1hM5tyJkQ-clLmSqw2zZ3LLob_P7daNn066F8fgI1cxtgUtbTLH3XdxIbzXEj1t3fmqWOl1ANC4qc5WN5B0zItr7Uf4JO3vyl4T-tN1uOa4-ZWUzBghchjgipHT6KtVEtUK5ziFvPLHfdPbUTt1SpBLSFHJFDSczgU"/></div>
+<div class="flex flex-col overflow-hidden">
+<span class="text-xs font-bold truncate">Vỏ lon nhôm</span>
+<span class="text-[10px] text-primary font-semibold">Kim loại tái chế</span>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Stats Section -->
+<section class="py-12 border-y border-slate-200 bg-slate-50">
+<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+<div class="grid grid-cols-2 md:grid-cols-4 gap-8 text-center">
+<div>
+<div class="text-3xl font-black text-primary">50k+</div>
+<div class="text-sm text-slate-500 font-medium">Người sử dụng</div>
+</div>
+<div>
+<div class="text-3xl font-black text-primary">98%</div>
+<div class="text-sm text-slate-500 font-medium">Độ chính xác AI</div>
+</div>
+<div>
+<div class="text-3xl font-black text-primary">1M+</div>
+<div class="text-sm text-slate-500 font-medium">Lượng rác đã phân loại</div>
+</div>
+<div>
+<div class="text-3xl font-black text-primary">24/7</div>
+<div class="text-sm text-slate-500 font-medium">Hỗ trợ trực tuyến</div>
+</div>
+</div>
+</div>
+</section>
+<!-- CTA Section -->
+<section class="py-20">
+<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+<div class="relative bg-background-dark rounded-3xl p-8 md:p-16 overflow-hidden">
+<div class="absolute top-0 right-0 w-1/2 h-full bg-primary/10 blur-[100px]"></div>
+<div class="relative z-10 grid lg:grid-cols-2 gap-12 items-center text-center lg:text-left">
+<div>
+<h2 class="text-3xl md:text-5xl font-black text-white mb-6 tracking-tight">Sẵn sàng để bảo vệ hành tinh?</h2>
+<p class="text-slate-400 text-lg mb-8 max-w-xl mx-auto lg:mx-0">Hãy tham gia cùng hàng ngàn người dùng khác trong việc xây dựng một cộng đồng không rác thải ngay hôm nay.</p>
+<a class="bg-primary hover:opacity-90 text-background-dark px-10 py-5 rounded-2xl font-black text-xl transition-all shadow-2xl shadow-primary/40 inline-flex items-center gap-3 hover:scale-105" href="#phan-loai">
+<span class="material-symbols-outlined"></span>
+<span>Trải nghiệm ngay</span>
+</a>
+</div>
+<div class="flex justify-center">
+<div class="w-full max-w-sm aspect-square rounded-full border-8 border-slate-800 flex items-center justify-center p-8 bg-slate-900/50 backdrop-blur-sm">
+<span class="material-symbols-outlined text-[120px] text-primary">eco</span>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+</main>
+<footer class="bg-white border-t border-slate-200 pt-16 pb-8">
+<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+<div class="grid grid-cols-1 md:grid-cols-4 gap-12 mb-16">
+<div>
+<div class="flex items-center gap-2 mb-6">
+<span class="text-lg font-bold text-primary">GreenMap</span>
+</div>
+<p class="text-slate-500 text-sm leading-relaxed">
+                    Ứng dụng hàng đầu về phân loại rác thải bằng trí tuệ nhân tạo tại Việt Nam. Vì một cuộc sống xanh và bền vững.
+                </p>
+</div>
+<div>
+<h4 class="text-slate-900 font-bold mb-6">Ứng dụng</h4>
+<ul class="space-y-4 text-sm text-slate-500">
+<li><a class="hover:text-primary transition-colors" href="index.html">Trang chủ</a></li>
+<li><a class="hover:text-primary transition-colors" href="cam-nang.html">Cẩm nang</a></li>
+<li><a class="hover:text-primary transition-colors" href="ban-do.html">Bản đồ</a></li>
+<li><a class="hover:text-primary transition-colors" href="#phan-loai">Phân loại AI</a></li>
+</ul>
+</div>
+<div>
+<h4 class="text-slate-900 font-bold mb-6">Hỗ trợ</h4>
+<ul class="space-y-4 text-sm text-slate-500">
+<li><a class="hover:text-primary transition-colors" href="#">Hướng dẫn sử dụng</a></li>
+<li><a class="hover:text-primary transition-colors" href="#">Chính sách bảo mật</a></li>
+<li><a class="hover:text-primary transition-colors" href="#">Điều khoản dịch vụ</a></li>
+<li><a class="hover:text-primary transition-colors" href="#">FAQ</a></li>
+</ul>
+</div>
+<div>
+<h4 class="text-slate-900 font-bold mb-6">Liên hệ</h4>
+<ul class="space-y-4 text-sm text-slate-500">
+<li class="flex items-center gap-3">contact@greenmap.vn</li>
+<li class="flex items-center gap-3">1900 1234</li>
+<li class="flex items-start gap-3">Số 91 phố Chùa Láng, Phường Láng, Hà Nội</li>
+</ul>
+</div>
+</div>
+<div class="pt-8 border-t border-slate-200 text-center">
+<p class="text-slate-500 text-sm">© 2026 Phân Loại Rác AI - GreenMap. Bảo lưu mọi quyền. <br class="md:hidden"/> Phát triển bởi EcoTech Team.</p>
+</div>
+</div>
+</footer>
+<script>
+    const uploadZone = document.getElementById('upload-zone');
+    const fileInput = document.getElementById('file-input');
+    const loadingState = document.getElementById('loading-state');
+    const resultSection = document.getElementById('result-section');
+    const previewImage = document.getElementById('preview-image');
+    const resetBtn = document.getElementById('reset-btn');
+
+    if (uploadZone) {
+        uploadZone.addEventListener('dragover', (e) => {
+            e.preventDefault();
+            uploadZone.classList.add('border-primary', 'bg-primary/20');
+        });
+
+        uploadZone.addEventListener('dragleave', () => {
+            uploadZone.classList.remove('border-primary', 'bg-primary/20');
+        });
+
+        uploadZone.addEventListener('drop', (e) => {
+            e.preventDefault();
+            uploadZone.classList.remove('border-primary', 'bg-primary/20');
+            const files = e.dataTransfer.files;
+            if (files.length > 0) handleFile(files[0]);
+        });
+    }
+
+    if (fileInput) {
+        fileInput.addEventListener('change', (e) => {
+            if (e.target.files.length > 0) handleFile(e.target.files[0]);
+        });
+    }
+
+    function handleFile(file) {
+        if (!file.type.startsWith('image/')) {
+            alert('Vui lòng tải lên tệp hình ảnh.');
+            return;
+        }
+
+        uploadZone.classList.add('hidden');
+        loadingState.classList.remove('hidden');
+
+        const reader = new FileReader();
+        reader.onload = (e) => {
+            previewImage.src = e.target.result;
+        };
+        reader.readAsDataURL(file);
+
+        setTimeout(() => {
+            loadingState.classList.add('hidden');
+            resultSection.classList.remove('hidden');
+            resultSection.scrollIntoView({ behavior: 'smooth', block: 'center' });
+        }, 2000);
+    }
+
+    if (resetBtn) {
+        resetBtn.addEventListener('click', () => {
+            resultSection.classList.add('hidden');
+            uploadZone.classList.remove('hidden');
+            fileInput.value = '';
+        });
+    }
+</script>
+</body></html>
